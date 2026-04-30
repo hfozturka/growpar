@@ -5,7 +5,7 @@ enum LightSource: String, CaseIterable {
     case redBlue = "Red/Blue LED"
     case hps = "HPS"
     case cmh = "CMH"
-    case sunlight = "Güneş"
+    case sunlight = "Sunlight"
 
     var icon: String {
         switch self {
