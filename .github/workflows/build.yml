@@ -41,7 +41,7 @@ jobs:
           -configuration Release \
           -archivePath "$RUNNER_TEMP/GrowPAR.xcarchive" \
           CODE_SIGN_STYLE=Manual \
-          CODE_SIGN_IDENTITY="Apple Distribution: Halil Fatih Öztürk (UKMP287GQD)" \
+          "CODE_SIGN_IDENTITY=Apple Distribution: Halil Fatih Öztürk (UKMP287GQD)" \
           PROVISIONING_PROFILE="23af3a42-979c-4433-b9f5-9ad2958e7f47" \
           DEVELOPMENT_TEAM=UKMP287GQD
 
@@ -81,6 +81,5 @@ jobs:
         xcrun altool --upload-app \
           -f "$RUNNER_TEMP/export/GrowPAR.ipa" \
           -t ios \
-          --username "$APPLE_ID" \
-          --password "$APPLE_APP_PASSWORD" \
-          --verbose
+          -u "$APPLE_ID" \
+          -p "$APPLE_APP_PASSWORD"
