@@ -31,7 +31,7 @@ jobs:
         PP_PATH="$RUNNER_TEMP/profile.mobileprovision"
         echo "$PROVISIONING_PROFILE_BASE64" | base64 --decode > "$PP_PATH"
         mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-        cp "$PP_PATH" ~/Library/MobileDevice/Provisioning\ Profiles/29b15343-0455-43fc-bd10-52f8e0dce661.mobileprovision
+        cp "$PP_PATH" ~/Library/MobileDevice/Provisioning\ Profiles/23af3a42-979c-4433-b9f5-9ad2958e7f47.mobileprovision
 
     - name: Build Archive
       run: |
@@ -42,7 +42,7 @@ jobs:
           -archivePath "$RUNNER_TEMP/GrowPAR.xcarchive" \
           CODE_SIGN_STYLE=Manual \
           CODE_SIGN_IDENTITY="Apple Distribution: Halil Fatih Öztürk (UKMP287GQD)" \
-          PROVISIONING_PROFILE="29b15343-0455-43fc-bd10-52f8e0dce661" \
+          PROVISIONING_PROFILE="23af3a42-979c-4433-b9f5-9ad2958e7f47" \
           DEVELOPMENT_TEAM=UKMP287GQD
 
     - name: Export IPA
@@ -63,7 +63,7 @@ jobs:
           <key>provisioningProfiles</key>
           <dict>
             <key>com.hfozturka.growparios</key>
-            <string>29b15343-0455-43fc-bd10-52f8e0dce661</string>
+            <string>23af3a42-979c-4433-b9f5-9ad2958e7f47</string>
           </dict>
         </dict>
         </plist>
