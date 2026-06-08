@@ -7,16 +7,16 @@ on:
 jobs:
   build:
     runs-on: macos-15
-    
+
     steps:
     - uses: actions/checkout@v4
 
-    - name: Select Xcode 26
+    - name: Install Xcode 26 Beta
       run: |
-        ls /Applications/ | grep Xcode
-        sudo xcode-select -s /Applications/Xcode_26.app || sudo xcode-select -s /Applications/Xcode.app
+        sudo xcode-select --reset
+        xcodes install 26.0 --select --no-superuser || true
         xcodebuild -version
-    
+
     - name: Install Certificate
       env:
         P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
