@@ -424,6 +424,8 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			EXCLUDED_ARCHS = "arm64 x86_64";
+			EXCLUDED_ARCHS[sdk=iphoneos*] = "";
 			};
 			name = Debug;
 		};
@@ -456,6 +458,8 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			EXCLUDED_ARCHS = "arm64 x86_64";
+			EXCLUDED_ARCHS[sdk=iphoneos*] = "";
 			};
 			name = Release;
 		};
@@ -473,6 +477,8 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			EXCLUDED_ARCHS = "arm64 x86_64";
+			EXCLUDED_ARCHS[sdk=iphoneos*] = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GrowPAR.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GrowPAR";
 			};
 			name = Debug;
@@ -491,6 +497,8 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			EXCLUDED_ARCHS = "arm64 x86_64";
+			EXCLUDED_ARCHS[sdk=iphoneos*] = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GrowPAR.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GrowPAR";
 			};
 			name = Release;
@@ -507,6 +515,8 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			EXCLUDED_ARCHS = "arm64 x86_64";
+			EXCLUDED_ARCHS[sdk=iphoneos*] = "";
 				TEST_TARGET_NAME = GrowPAR;
 			};
 			name = Debug;
@@ -523,6 +533,8 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			EXCLUDED_ARCHS = "arm64 x86_64";
+			EXCLUDED_ARCHS[sdk=iphoneos*] = "";
 				TEST_TARGET_NAME = GrowPAR;
 			};
 			name = Release;
