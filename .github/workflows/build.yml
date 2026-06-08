@@ -13,13 +13,8 @@ jobs:
 
     - name: Select Xcode 16
       run: |
-        ls /Applications/ | grep -i xcode
-        sudo xcode-select -s /Applications/Xcode_16.2.app 2>/dev/null || \
-        sudo xcode-select -s /Applications/Xcode_16.3.app 2>/dev/null || \
-        sudo xcode-select -s /Applications/Xcode_16.app 2>/dev/null || \
-        sudo xcode-select -s /Applications/Xcode.app
+        sudo xcode-select -s /Applications/Xcode_16.app || sudo xcode-select -s /Applications/Xcode.app
         xcodebuild -version
-        xcrun --sdk iphoneos --show-sdk-version
 
     - name: Setup API Key
       env:
@@ -51,8 +46,29 @@ jobs:
         echo "$PROVISIONING_PROFILE_BASE64" | base64 --decode > "$PP_PATH"
         mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
         UUID=$(grep -a 'UUID' "$PP_PATH" | grep -o '[0-9a-f-]\{36\}' | head -1)
-        echo "Profile UUID: $UUID"
         cp "$PP_PATH" ~/Library/MobileDevice/Provisioning\ Profiles/${UUID}.mobileprovision
+
+    - name: Fix Assets
+      run: |
+        cat > GrowPAR/Assets.xcassets/AppIcon.appiconset/Contents.json << 'EOF'
+        {
+          "images": [
+            {
+              "filename": "AppIcon-1024.png",
+              "idiom": "universal",
+              "platform": "ios",
+              "size": "1024x1024"
+            }
+          ],
+          "info": {
+            "author": "xcode",
+            "version": 1
+          },
+          "properties": {
+            "pre-rendered": true
+          }
+        }
+        EOF
 
     - name: Build Archive
       env:
@@ -71,11 +87,9 @@ jobs:
           -authenticationKeyIssuerID "$API_ISSUER_ID" \
           CODE_SIGN_STYLE=Automatic \
           DEVELOPMENT_TEAM=UKMP287GQD \
-          COMPILER_INDEX_STORE_ENABLE=NO \
-          ENABLE_PREVIEWS=NO \
-          ONLY_ACTIVE_ARCH=NO \
-          SKIP_INSTALL=NO \
-          "EXCLUDED_ARCHS[sdk=iphonesimulator*]=arm64 x86_64"
+          ASSETCATALOG_COMPILER_SKIP_APP_STORE_DEPLOYMENT=NO \
+          ASSETCATALOG_NOTICES=NO \
+          ASSETCATALOG_WARNINGS=NO
 
     - name: Export IPA
       env:
