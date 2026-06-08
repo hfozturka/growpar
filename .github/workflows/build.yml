@@ -13,8 +13,13 @@ jobs:
 
     - name: Select Xcode 16
       run: |
-        sudo xcode-select -s /Applications/Xcode_16.app || sudo xcode-select -s /Applications/Xcode.app
+        ls /Applications/ | grep -i xcode
+        sudo xcode-select -s /Applications/Xcode_16.2.app 2>/dev/null || \
+        sudo xcode-select -s /Applications/Xcode_16.3.app 2>/dev/null || \
+        sudo xcode-select -s /Applications/Xcode_16.app 2>/dev/null || \
+        sudo xcode-select -s /Applications/Xcode.app
         xcodebuild -version
+        xcrun --sdk iphoneos --show-sdk-version
 
     - name: Setup API Key
       env:
@@ -68,6 +73,8 @@ jobs:
           DEVELOPMENT_TEAM=UKMP287GQD \
           COMPILER_INDEX_STORE_ENABLE=NO \
           ENABLE_PREVIEWS=NO \
+          ONLY_ACTIVE_ARCH=NO \
+          SKIP_INSTALL=NO \
           "EXCLUDED_ARCHS[sdk=iphonesimulator*]=arm64 x86_64"
 
     - name: Export IPA
