@@ -11,11 +11,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install Xcode 26 Beta
+    - name: Select Xcode
       run: |
-        sudo xcode-select --reset
-        xcodes install 26.0 --select --no-superuser || true
+        ls /Applications/ | grep Xcode
+        sudo xcode-select -s /Applications/Xcode_16.app || sudo xcode-select -s /Applications/Xcode.app
         xcodebuild -version
+        xcodebuild -showsdks
 
     - name: Install Certificate
       env:
@@ -46,6 +47,7 @@ jobs:
           -scheme GrowPAR \
           -configuration Release \
           -archivePath "$RUNNER_TEMP/GrowPAR.xcarchive" \
+          -sdk iphoneos \
           CODE_SIGN_STYLE=Manual \
           "CODE_SIGN_IDENTITY=Apple Distribution: Halil Fatih Öztürk (UKMP287GQD)" \
           PROVISIONING_PROFILE="23af3a42-979c-4433-b9f5-9ad2958e7f47" \
