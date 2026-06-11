@@ -132,6 +132,8 @@ struct ContentView: View {
     @State private var showLightPicker = false
     @State private var showPlantPicker = false
     @State private var showLightMap = false
+    @State private var countdown = 0
+    @State private var countdownTimer: Timer? = nil
 
     var body: some View {
         ZStack {
@@ -295,18 +297,27 @@ struct ContentView: View {
                     .padding(.horizontal)
 
                     Button(action: {
-                        if camera.isRunning { camera.stopSession() }
-                        else { camera.requestPermissionAndStart() }
-                    }) {
-                        HStack(spacing: 10) {
-                            Image(systemName: camera.isRunning ? "stop.fill" : "play.fill")
-                            Text(camera.isRunning ? NSLocalizedString("Stop Measurement", comment: "") : NSLocalizedString("Start Measurement", comment: ""))
-                                .font(.system(size: 16, weight: .semibold))
-                        }
-                        .foregroundColor(.black).frame(maxWidth: .infinity).padding(.vertical, 16)
-                        .background(camera.isRunning ? Color.red : Color.green).cornerRadius(14)
-                    }
-                    .padding(.horizontal)
+                                            if camera.isRunning {
+                                                camera.stopSession()
+                                                countdown = 0
+                                                countdownTimer?.invalidate()
+                                            } else if countdown == 0 {
+                                                countdown = 3
+                                                countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { t in
+                                                    if countdown > 1 { countdown -= 1 }
+                                                    else { t.invalidate(); countdown = 0; camera.requestPermissionAndStart() }
+                                                }
+                                            }
+                                        }) {
+                                            HStack(spacing: 10) {
+                                                Image(systemName: camera.isRunning ? "stop.fill" : (countdown > 0 ? "timer" : "play.fill"))
+                                                Text(camera.isRunning ? NSLocalizedString("Stop Measurement", comment: "") : (countdown > 0 ? "\(countdown)..." : NSLocalizedString("Start Measurement", comment: "")))
+                                                    .font(.system(size: 16, weight: .semibold))
+                                            }
+                                            .foregroundColor(.black).frame(maxWidth: .infinity).padding(.vertical, 16)
+                                            .background(camera.isRunning ? Color.red : (countdown > 0 ? Color.orange : Color.green)).cornerRadius(14)
+                                        }
+                                        .padding(.horizontal)
 
                     if camera.isRunning {
                         Button(action: {
