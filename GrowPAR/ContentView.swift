@@ -334,6 +334,7 @@ struct ContentView: View {
                         }
                         .padding(.horizontal)
                     }
+                    BannerAdView(adUnitID: "ca-app-pub-1466800351917834/3415403923")
                     Spacer().frame(height: 32)
                 }
                 .padding(.top, 12)
@@ -551,7 +552,8 @@ struct LightMapView: View {
                                     .background(Color.green).cornerRadius(14).padding(.horizontal)
                             }
                         }
-                        Spacer().frame(height: 32)
+                        BannerAdView(adUnitID: "ca-app-pub-1466800351917834/3415403923")
+                    Spacer().frame(height: 32)
                     }
                 }
             }
@@ -1090,6 +1092,7 @@ struct SettingsView: View {
                             Text("hfozturka").foregroundColor(.white).font(.system(size: 14))
                         }
                     }
+                    BannerAdView(adUnitID: "ca-app-pub-1466800351917834/3415403923")
                     Spacer().frame(height: 32)
                 }
             }

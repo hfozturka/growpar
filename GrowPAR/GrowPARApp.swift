@@ -1,14 +1,13 @@
-//
-//  GrowPARApp.swift
-//  GrowPAR
-//
-//  Created by hfö on 20.04.26.
-//
-
 import SwiftUI
+import GoogleMobileAds
 
 @main
 struct GrowPARApp: App {
+    
+    init() {
+        MobileAds.shared.start()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

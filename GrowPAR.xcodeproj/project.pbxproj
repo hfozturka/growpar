@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9F3B769C2FDFD999006FBDA7 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 9F3B769B2FDFD999006FBDA7 /* GoogleMobileAds */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		9F93AB202F962B6200BA246E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,9 +33,22 @@
 		9F93AB292F962B6200BA246E /* GrowPARUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrowPARUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		9F3B76972FDECC04006FBDA7 /* Exceptions for "GrowPAR" folder in "GrowPAR" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 9F93AB0E2F962B5E00BA246E /* GrowPAR */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		9F93AB112F962B5E00BA246E /* GrowPAR */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				9F3B76972FDECC04006FBDA7 /* Exceptions for "GrowPAR" folder in "GrowPAR" target */,
+			);
 			path = GrowPAR;
 			sourceTree = "<group>";
 		};
@@ -52,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F3B769C2FDFD999006FBDA7 /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +90,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F3B769A2FDFD999006FBDA7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9F93AB062F962B5E00BA246E = {
 			isa = PBXGroup;
 			children = (
 				9F93AB112F962B5E00BA246E /* GrowPAR */,
 				9F93AB222F962B6200BA246E /* GrowPARTests */,
 				9F93AB2C2F962B6200BA246E /* GrowPARUITests */,
+				9F3B769A2FDFD999006FBDA7 /* Frameworks */,
 				9F93AB102F962B5E00BA246E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +138,7 @@
 			);
 			name = GrowPAR;
 			packageProductDependencies = (
+				9F3B769B2FDFD999006FBDA7 /* GoogleMobileAds */,
 			);
 			productName = GrowPAR;
 			productReference = 9F93AB0F2F962B5E00BA246E /* GrowPAR.app */;
@@ -202,6 +229,9 @@
 			);
 			mainGroup = 9F93AB062F962B5E00BA246E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				9F3B76932FDEC869006FBDA7 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9F93AB102F962B5E00BA246E /* Products */;
 			projectDirPath = "";
@@ -406,6 +436,7 @@
 				DEVELOPMENT_TEAM = UKMP287GQD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GrowPAR/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSCameraUsageDescription = "GrowPAR uses camera to measure light intensity for your grow lights";
@@ -438,6 +469,7 @@
 				DEVELOPMENT_TEAM = UKMP287GQD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GrowPAR/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSCameraUsageDescription = "GrowPAR uses camera to measure light intensity for your grow lights";
@@ -567,6 +599,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9F3B76932FDEC869006FBDA7 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9F3B769B2FDFD999006FBDA7 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F3B76932FDEC869006FBDA7 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9F93AB072F962B5E00BA246E /* Project object */;
 }
