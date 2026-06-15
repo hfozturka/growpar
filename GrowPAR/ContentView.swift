@@ -132,6 +132,7 @@ struct ContentView: View {
     @State private var showLightPicker = false
     @State private var showPlantPicker = false
     @State private var showLightMap = false
+    @State private var showPremium = false
     @State private var countdown = 0
     @State private var countdownTimer: Timer? = nil
 
@@ -150,6 +151,11 @@ struct ContentView: View {
                                 .foregroundColor(.gray)
                         }
                         Spacer()
+                        Button(action: { showPremium = true }) {
+                            Image(systemName: StoreManager.shared.isPremium ? "star.fill" : "star")
+                                .foregroundColor(.yellow)
+                                .font(.system(size: 18))
+                        }
                         Button(action: { showLightMap = true }) {
                             Image(systemName: "map.fill")
                                 .foregroundColor(.green)
@@ -334,7 +340,9 @@ struct ContentView: View {
                         }
                         .padding(.horizontal)
                     }
+                    if !StoreManager.shared.isPremium {
                     BannerAdView(adUnitID: "ca-app-pub-1466800351917834/3415403923")
+                    }
                     Spacer().frame(height: 32)
                 }
                 .padding(.top, 12)
@@ -345,6 +353,7 @@ struct ContentView: View {
         .sheet(isPresented: $showLightPicker) { LightPickerView(selected: $selectedLight, camera: camera) }
         .sheet(isPresented: $showPlantPicker) { PlantPickerView(selected: $selectedPlant) }
         .sheet(isPresented: $showSettings) { SettingsView(camera: camera) }
+        .sheet(isPresented: $showPremium) { PremiumView() }
         .sheet(isPresented: $showLightMap) { LightMapView(camera: camera, selectedPlant: selectedPlant) }
         .onChange(of: selectedLight) { _, light in camera.luxToPPFDFactor = light.luxToPPFD }
     }
@@ -552,7 +561,9 @@ struct LightMapView: View {
                                     .background(Color.green).cornerRadius(14).padding(.horizontal)
                             }
                         }
-                        BannerAdView(adUnitID: "ca-app-pub-1466800351917834/3415403923")
+                        if !StoreManager.shared.isPremium {
+                    BannerAdView(adUnitID: "ca-app-pub-1466800351917834/3415403923")
+                    }
                     Spacer().frame(height: 32)
                     }
                 }
@@ -1092,7 +1103,9 @@ struct SettingsView: View {
                             Text("hfozturka").foregroundColor(.white).font(.system(size: 14))
                         }
                     }
+                    if !StoreManager.shared.isPremium {
                     BannerAdView(adUnitID: "ca-app-pub-1466800351917834/3415403923")
+                    }
                     Spacer().frame(height: 32)
                 }
             }
